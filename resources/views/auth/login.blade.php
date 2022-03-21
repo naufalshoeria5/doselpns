@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="loading" lang="en" data-textdirection="ltr">
+<html class="loading" lang="{{ str_replace('_','-', app()->getLocale()) }}" data-textdirection="ltr">
 <!-- BEGIN: Head-->
 
 <head>
@@ -9,30 +9,37 @@
     <meta name="description" content="Chameleon Admin is a modern Bootstrap 4 webapp &amp; admin dashboard html template with a large number of components, elegant design, clean and organized code.">
     <meta name="keywords" content="admin template, Chameleon admin template, dashboard template, gradient admin template, responsive admin template, webapp, eCommerce dashboard, analytic dashboard">
     <meta name="author" content="ThemeSelect">
-    <title>Halaman Login - Dosel PNS</title>
-    <link rel="apple-touch-icon" href="app-assets/images/logo/logo1.png">
-    <link rel="shortcut icon" type="image/x-icon" href="app-assets/images/logo/logo1.png">
+
+    @hasSection('title')
+
+    <title>@yield('title') - {{ config('app.name') }} Halaman Login - Dosel PNS</title>
+
+    @else
+        <title>{{ config('app.name') }}</title>
+    @endif
+    <link rel="apple-touch-icon" href="{{ asset('app-assets/images/logo/logo1.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('app-assets/images/logo/logo1.png') }}">
     <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
 
     <!-- BEGIN: Vendor CSS-->
-    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/vendors.min.css') }}">
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
-    <link rel="stylesheet" type="text/css" href="app-assets/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/css/bootstrap-extended.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/css/colors.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/css/components.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/bootstrap-extended.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/colors.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/components.css') }}">
     <!-- END: Theme CSS-->
 
     <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css" href="app-assets/css/core/menu/menu-types/vertical-menu.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/css/core/colors/palette-gradient.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/css/pages/login-register.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/core/menu/menu-types/vertical-menu.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/core/colors/palette-gradient.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/pages/login-register.css') }}">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
     <!-- END: Custom CSS-->
 
 </head>
@@ -54,7 +61,7 @@
                             <div class="card border-grey border-lighten-3 px-1 py-1 m-0">
                                 <div class="card-header border-0">
                                     <div class="text-center mb-1">
-                                        <img src="app-assets/images/logo/logo1.png" width="50%" alt="logo vijaya kusuma">
+                                        <img src="{{ asset('app-assets/images/logo/logo1.png') }}" width="50%" alt="logo vijaya kusuma">
                                     </div>
                                     <div class="font-large-1  text-center">
                                         Halaman Login
@@ -63,7 +70,7 @@
                                 <div class="card-content">
 
                                     <div class="card-body">
-                                        <form class="form-horizontal" action="index.html" novalidate>
+                                        <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                                             <fieldset class="form-group position-relative has-icon-left">
                                                 <input type="text" class="form-control round" id="user-name" placeholder="Masukan Username" required>
                                                 <div class="form-control-position">
@@ -88,8 +95,7 @@
 
                                         </form>
                                     </div>
-
-                                    <p class="card-subtitle text-muted text-right font-small-3 mx-2 my-1"><span>Belum Memiliki Akun ? <a href="register.html" class="card-link">Daftar Sekarang</a></span></p>
+                                    <p class="card-subtitle text-muted text-right font-small-3 mx-2 my-1"><span>Belum Memiliki Akun ? <a href="{{ route('register') }}" class="card-link">Daftar Sekarang</a></span></p>
                                 </div>
                             </div>
                         </div>
@@ -103,20 +109,20 @@
 
 
     <!-- BEGIN: Vendor JS-->
-    <script src="app-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
+    <script src="{{ asset('app-assets/vendors/js/vendors.min.js') }}" type="text/javascript"></script>
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->
-    <script src="app-assets/vendors/js/forms/validation/jqBootstrapValidation.js" type="text/javascript"></script>
+    <script src="{{ asset('app-assets/vendors/js/forms/validation/jqBootstrapValidation.js') }}" type="text/javascript"></script>
     <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->
-    <script src="app-assets/js/core/app-menu.js" type="text/javascript"></script>
-    <script src="app-assets/js/core/app.js" type="text/javascript"></script>
+    <script src="{{ asset('app-assets/js/core/app-menu.js" type="text/javascript') }}"></script>
+    <script src="{{ asset('app-assets/js/core/app.js') }}" type="text/javascript"></script>
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
-    <script src="app-assets/js/scripts/forms/form-login-register.js" type="text/javascript"></script>
+    <script src="{{ asset('app-assets/js/scripts/forms/form-login-register.js') }}" type="text/javascript"></script>
     <!-- END: Page JS-->
 
 </body>
