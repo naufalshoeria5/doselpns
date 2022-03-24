@@ -71,21 +71,31 @@
 
                                     <div class="card-body">
                                         <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+                                            @csrf
                                             <fieldset class="form-group position-relative has-icon-left">
-                                                <input type="text" class="form-control round" id="user-name" placeholder="Masukan Username" required>
+                                                <input type="email" name="email" class="form-control round @error('email') is-invalid @enderror" id="email" placeholder="Masukan Email" required>
                                                 <div class="form-control-position">
                                                     <i class="ft-user"></i>
                                                 </div>
+                                                @error('email')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
                                             </fieldset>
                                             <fieldset class="form-group position-relative has-icon-left">
-                                                <input type="password" class="form-control round" id="user-password" placeholder="Masukan Password" required>
+                                                <input type="password" name="password" class="form-control round @error('password') is-invalid @enderror" id="user-password" placeholder="Masukan Password" required autocomplete="current-password">
                                                 <div class="form-control-position">
                                                     <i class="ft-lock"></i>
                                                 </div>
+                                                @error('password')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
                                             </fieldset>
                                             <div class="form-group row">
                                                 <div class="col-md-6 col-12 text-center text-sm-left">
-
                                                 </div>
                                                 {{-- <div class="col-md-6 col-12 float-sm-left text-center text-sm-right"><a href="recover-password.html" class="card-link">Forgot Password?</a></div> --}}
                                             </div>

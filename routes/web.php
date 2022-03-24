@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -15,16 +16,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
-Route::get('/', function () {
-    return view('welcome');
+
+Route::middleware(['auth'])->group(function(){
+
+    Route::get('/', DashboardController::class);
+    
+    // Route::get('/login', function() {
+    //     return view('auth.login');
+    // });
+    // Route::get('/register', function() {
+    //     return view('auth.register');
+    // });
+    
+    
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
 
-Route::get('/login', function() {
-    return view('auth.login');
-});
-Route::get('/register', function() {
-    return view('auth.register');
-});
+// Auth::routes();
 
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
