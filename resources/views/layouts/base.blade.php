@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    
     @hasSection('title')
         <title>@yield('title') - {{ config('app.name') }}</title>
     @else
@@ -76,12 +77,11 @@
     @include('layouts/_partials/header')
     @include('layouts/_partials/sidebar')
 
-
     @yield('content')
 
     @include('layouts/_partials/footer')
 
-    <!-- BEGIN: Vendor JS-->
+    {{-- <!-- BEGIN: Vendor JS-->
     <script src="app-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
     <!-- BEGIN Vendor JS-->
 
@@ -91,13 +91,13 @@
     <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->
-    <script src="app-assets/js/core/app-menu.js" type="text/javascript"></script>
-    <script src="app-assets/js/core/app.js" type="text/javascript"></script>
+    <script src="{{ asset('app-assets/js/core/app-menu.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('app-assets/js/core/app.js') }}" type="text/javascript"></script>
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
-    <script src="app-assets/js/scripts/pages/dashboard-analytics.js" type="text/javascript"></script>
-    <!-- END: Page JS-->
+    <script src="{{ asset('app-assets/js/scripts/pages/dashboard-analytics.js') }}" type="text/javascript"></script>
+    <!-- END: Page JS--> --}}
 
      <!-- BEGIN: Vendor JS-->
      <script src="{{ asset('js/app.js') }}"></script>
@@ -176,9 +176,9 @@
              });
  
          });
-         $('#import-absent').on('change', function() {
-             $('#button-addon2').removeAttr('disabled');
-         });
+        //  $('#import-absent').on('change', function() {
+        //      $('#button-addon2').removeAttr('disabled');
+        //  });
      </script>
  
      @yield('script')
