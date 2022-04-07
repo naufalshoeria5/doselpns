@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PegawaiController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -17,18 +18,27 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::middleware(['auth'])->group(function(){
+Route::middleware(['auth'])->group(function () {
 
-    Route::get('/', DashboardController::class);
-    
+    Route::get('/', DashboardController::class)->name('/');
+
     // Route::get('/login', function() {
     //     return view('auth.login');
     // });
     // Route::get('/register', function() {
     //     return view('auth.register');
     // });
+
     
     
+    // Pegawai
+    Route::resource('/pegawai', PegawaiController::class);
+    // Pegawai
+
+
+    // Route::view('/pegawai', 'pages.pegawai.index', ['title' => 'judul']);
+
+
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
 

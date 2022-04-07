@@ -73,11 +73,11 @@
                                         <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                                             @csrf
                                             <fieldset class="form-group position-relative has-icon-left">
-                                                <input type="email" name="email" class="form-control round @error('email') is-invalid @enderror" id="email" placeholder="Masukan Email" required>
+                                                <input type="text" name="nip" class="form-control round @error('nip') is-invalid @enderror" id="nip" placeholder="Masukan NIP" required>
                                                 <div class="form-control-position">
                                                     <i class="ft-user"></i>
                                                 </div>
-                                                @error('email')
+                                                @error('nip')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>

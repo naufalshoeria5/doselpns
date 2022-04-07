@@ -17,27 +17,11 @@
             </li>
             <li class=" nav-item"><a href="#"><i class="ft-users"></i><span class="menu-title" data-i18n="">Karyawan</span></a>
                 <ul class="menu-content">
-                    <li><a class="menu-item" href="email-application.html">Email Application</a>
+                    <li>
+                        <a href="{{ route('pegawai.index') }}" class="menu-item" href="">Data Pegawai</a>
                     </li>
-                    <li><a class="menu-item" href="chat-application.html">Chat Application</a>
-                    </li>
-                    <li><a class="menu-item" href="full-calender.html">Full Calendar</a>
-                    </li>
-                    <li><a class="menu-item" href="project-summary.html">Project Summary</a>
-                    </li>
-                    <li><a class="menu-item" href="invoice-template.html">Invoice</a>
-                    </li>
-                    <li><a class="menu-item" href="#">Timelines</a>
-                        <ul class="menu-content">
-                            <li><a class="menu-item" href="timeline-center.html">Timelines Center</a>
-                            </li>
-                            <li><a class="menu-item" href="timeline-horizontal.html">Timelines Horizontal</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a class="menu-item" href="user-profile.html">Users Profile</a>
-                    </li>
-                    <li><a class="menu-item" href="users-contacts.html">Contact List</a>
+                    <li>
+                        <a href="{{ route('pegawai.create') }}" class="menu-item" href="">Tambah Pegawai</a>
                     </li>
                 </ul>
             </li>
