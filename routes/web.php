@@ -29,10 +29,10 @@ Route::middleware(['auth'])->group(function () {
     //     return view('auth.register');
     // });
 
-    
-    
+
+
     // Pegawai
-    Route::resource('/pegawai', PegawaiController::class);
+    Route::resource('pegawai', PegawaiController::class);
     // Pegawai
 
 

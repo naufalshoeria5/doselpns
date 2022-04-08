@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pegawai;
 use Illuminate\Http\Request;
 
 class PegawaiController extends Controller
@@ -13,9 +14,12 @@ class PegawaiController extends Controller
      */
     public function index()
     {
+        $pegawais   = Pegawai::all();
+
         $title      = 'Data Pegawai';
         return view('pages.pegawai.index', [
-            'title' => $title
+            'title'     => $title,
+            'pegawais'  => $pegawais
         ]);
     }
 
@@ -26,7 +30,10 @@ class PegawaiController extends Controller
      */
     public function create()
     {
-        //
+        $title      = 'Formulir Tambah Data Pegawai';
+        return view('pages.pegawai.form', [
+            'title' => $title
+        ]);
     }
 
     /**
@@ -37,7 +44,16 @@ class PegawaiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pegawai    = Pegawai::create([
+            'nip'           => $request->nip,
+            'nama'          => $request->nama,
+            'pangkat'       => $request->pangkat,
+            'kesatuan'      => $request->kesatuan,
+            'tanggal_lahir' => $request->tanggal_lahir
+        ]);
+
+
+        return redirect('pegawai')->withSuccess('Pegawai Telah Berhasil Diinput');
     }
 
     /**

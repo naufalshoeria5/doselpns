@@ -12,8 +12,8 @@
                             <div class="card-header">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <h4>Data Pegawai</h4>
-                                    <a href="" class="btn btn-info">
-                                        <div class="d-flex justify-content-between align-items-center w-full ">
+                                    <a href="{{ route('pegawai.create') }}" class="btn btn-info">
+                                            <div class="d-flex justify-content-between align-items-center w-full ">
                                             <span class="mr-1">Tambah Data</span>
                                             <i class="ft-user-plus"></i>
                                         </div>
@@ -30,77 +30,36 @@
                                                     <th>NIP</th>
                                                     <th>Nama</th>
                                                     <th>Pangkat</th>
-                                                    <th>Jabatan</th>
+                                                    <th>Kesatuan</th>
                                                     <th>Tanggal Lahir</th>
+                                                    <th>Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td class="text-center">1</td>
-                                                    <td>System Architect</td>
-                                                    <td>Edinburgh</td>
-                                                    <td>61</td>
-                                                    <td>2011/04/25</td>
-                                                    <td>$320,800</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">2</td>
-                                                    <td>Accountant</td>
-                                                    <td>Tokyo</td>
-                                                    <td>63</td>
-                                                    <td>2011/07/25</td>
-                                                    <td>$170,750</td>
-                                                </tr> 
-                                                <tr>
-                                                    <td class="text-center">3</td>
-                                                    <td>Systems Administrator</td>
-                                                    <td>London</td>
-                                                    <td>21</td>
-                                                    <td>2009/02/27</td>
-                                                    <td>$103,500</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">4</td>
-                                                    <td>Developer</td>
-                                                    <td>San Francisco</td>
-                                                    <td>30</td>
-                                                    <td>2010/07/14</td>
-                                                    <td>$86,500</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">5</td>
-                                                    <td>Regional Director</td>
-                                                    <td>Edinburgh</td>
-                                                    <td>51</td>
-                                                    <td>2008/11/13</td>
-                                                    <td>$183,000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">6</td>
-                                                    <td>Javascript Developer</td>
-                                                    <td>Singapore</td>
-                                                    <td>29</td>
-                                                    <td>2011/06/27</td>
-                                                    <td>$183,000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">7</td>
-                                                    <td>Customer Support</td>
-                                                    <td>New York</td>
-                                                    <td>27</td>
-                                                    <td>2011/01/25</td>
-                                                    <td>$112,000</td>
-                                                </tr>
-                                            </tbody>
-                                            <tfoot>
-                                                <tr>
-                                                    <th class="text-center">8</th>
-                                                    <th>Position</th>
-                                                    <th>Office</th>
-                                                    <th>Age</th>
-                                                    <th>Start date</th>
-                                                    <th>Salary</th>
-                                                </tr>
+                                                @php
+                                                    $i = 1
+                                                @endphp
+                                                @foreach ($pegawais as $item)
+                                                    <tr>
+                                                        <td class="text-center">{{ $i++ }}</td>
+                                                        <td>{{ $item->nip }}</td>
+                                                        <td>{{ $item->nama }}</td>
+                                                        <td>{{ $item->pangkat }}</td>
+                                                        <td>{{ $item->kesatuan }}</td>
+                                                        <td>{{ date('d m Y', strtotime($item->tanggal_lahir)) }}</td>
+                                                        <td><button class="btn btn-sm btn-outline-danger delete"
+                                                            value="{{ route('pegawai.destroy', $item->id) }}"
+                                                            title="Hapus">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                height="16" fill="none" viewBox="0 0 24 24"
+                                                                stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    stroke-width="2"
+                                                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                            </svg>
+                                                        </button></td>
+                                                    </tr>
+                                                @endforeach
                                             </tfoot>
                                         </table>
                                         {{-- <table class="table-striped table-bordered datatable">
@@ -161,4 +120,20 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: true,
+            timer: false
+        });
+
+        // toastr.success("a");
+        @if (session('success'))
+            toastr.success("{{ session('success') }}");
+        @endif()
+    </script>
 @endsection
