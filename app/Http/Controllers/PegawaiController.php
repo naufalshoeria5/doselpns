@@ -62,7 +62,9 @@ class PegawaiController extends Controller
             $jenis  = $request->jenis;
 
             foreach ($request->file('file') as $key => $value) {
-                $nama_file = $value->storeAs('uploads/berkasPegawai', $request->nip . '_' . $jenis[$key], 'public');
+                $custom_file_name = $request->nip . '_' . $jenis[$key] . '.' . $value->extension();
+                // $path = $request->file('file')->storeAs('directory_name',$custom_file_name);
+                $nama_file = $value->storeAs('uploads/berkasPegawai', $custom_file_name, 'public');
 
                 BerkasPegawai::create([
                     'pegawai_id'    => $pegawai->id,
