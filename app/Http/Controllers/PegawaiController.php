@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BerkasPegawai;
 use App\Models\Pegawai;
 use Illuminate\Http\Request;
 
@@ -53,6 +54,24 @@ class PegawaiController extends Controller
         ]);
 
 
+        $validatedData = $request->validate([
+            'file.*' => 'mimes:csv,txt,xlx,xls,pdf,xlsx'
+        ]);
+
+        if ($request->hasfile('file')) {
+            $jenis  = $request->jenis;
+
+            foreach ($request->file('file') as $key => $value) {
+                $nama_file = $value->storeAs('uploads/berkasPegawai', $request->nip . '_' . $jenis[$key], 'public');
+
+                BerkasPegawai::create([
+                    'pegawai_id'    => $pegawai->id,
+                    'nama_berkas'   => $nama_file,
+                    'jenis'         => $jenis[$key]
+                ]);
+            }
+        }
+
         return redirect('pegawai')->withSuccess('Pegawai Telah Berhasil Diinput');
     }
 
@@ -64,7 +83,13 @@ class PegawaiController extends Controller
      */
     public function show($id)
     {
-        //
+        $pegawai = Pegawai::find($id);
+        $title      = 'Formulir Edit Data Pegawai';
+
+        return view('pages.pegawai.form', [
+            'title'     => $title,
+            'pegawai'   => $pegawai
+        ]);
     }
 
     /**

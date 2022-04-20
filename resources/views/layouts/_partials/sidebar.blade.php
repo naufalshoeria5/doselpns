@@ -15,21 +15,30 @@
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class=" nav-item"><a href="{{ route('/') }}"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dashboard</span></a>
             </li>
-            <li class=" nav-item"><a href="#"><i class="ft-users"></i><span class="menu-title" data-i18n="">Pegawai</span></a>
+            <li class=" nav-item {{ request()->is('pegawai*') ? 'active' : '' }}"><a href="#"><i class="ft-users"></i><span class="menu-title" data-i18n="">Pegawai</span></a>
                 <ul class="menu-content">
-                    <li>
+                    <li class="{{ request()->is('pegawai*') ? 'active' : '' }}">
                         <a href="{{ route('pegawai.index') }}" class="menu-item" href="">Data Pegawai</a>
                     </li>
-                    <li>
+                    <li class="{{ Request::segment(1) == 'pegawai' && Request::segment(2) == 'create' ? 'active' : '' }}">
                         <a href="{{ route('pegawai.create') }}" class="menu-item" href="">Tambah Pegawai</a>
                     </li>
                 </ul>
             </li>
-            <li class="nav-item"><a href="{{ route('/') }}"><i class="ft-user"></i><span class="menu-title" data-i18n="">User</span></a></li>
-            {{-- <li class=" nav-item"><a href="https://themeselection.com/support"><i class="ft-life-buoy"></i><span class="menu-title" data-i18n="">Raise Support</span></a>
+            <li class=" nav-item dropdown"><a href="#"><i class="ft-file"></i><span class="menu-title" data-i18n="">Berkas</span></a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{{ route('tahor.index') }}" class="menu-item" href="">Data Pensiun</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('pegawai.create') }}" class="menu-item" href="">Data Kenaikan Pangkat</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('pegawai.create') }}" class="menu-item" href="">Data Tahor</a>
+                    </li>
+                </ul>
             </li>
-            <li class=" nav-item"><a href="https://themeselection.com/demo/chameleon-admin-template/documentation"><i class="ft-book"></i><span class="menu-title" data-i18n="">Documentation</span></a>
-            </li> --}}
+            <li class="nav-item"><a href="{{ route('/') }}"><i class="ft-user"></i><span class="menu-title" data-i18n="">User</span></a></li>
         </ul>
     </div>
 </div>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\TahorController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -22,16 +23,11 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/', DashboardController::class)->name('/');
 
-    // Route::get('/login', function() {
-    //     return view('auth.login');
-    // });
-    // Route::get('/register', function() {
-    //     return view('auth.register');
-    // });
+    // route tahor
+    Route::resource('tahor',TahorController::class);
+    // tahor
 
-
-
-    // Pegawai
+    // route Pegawai
     Route::resource('pegawai', PegawaiController::class);
     // Pegawai
 
@@ -41,7 +37,3 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
-
-// Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

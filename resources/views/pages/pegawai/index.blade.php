@@ -23,7 +23,7 @@
                             <div class="card-content collapse show">
                                 <div class="card-body card-dashboard">
                                     <div class="table-responsive">
-                                        <table class="table table-striped table-bordered zero-configuration">
+                                        <table class="table table-striped table-bordered zero-configuration datatable">
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
@@ -35,18 +35,18 @@
                                                     <th>Aksi</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody class="tbody">
                                                 @php
                                                     $i = 1
                                                 @endphp
                                                 @foreach ($pegawais as $item)
-                                                    <tr>
+                                                    <tr class="table-tr" data-url="{{ route('pegawai.show', $item->id)}}">
                                                         <td class="text-center">{{ $i++ }}</td>
                                                         <td>{{ $item->nip }}</td>
                                                         <td>{{ $item->nama }}</td>
                                                         <td>{{ $item->pangkat }}</td>
                                                         <td>{{ $item->kesatuan }}</td>
-                                                        <td>{{ date('d m Y', strtotime($item->tanggal_lahir)) }}</td>
+                                                        <td>{{ date('d M Y', strtotime($item->tanggal_lahir)) }}</td>
                                                         <td><button class="btn btn-sm btn-outline-danger delete"
                                                             value="{{ route('pegawai.destroy', $item->id) }}"
                                                             title="Hapus">
@@ -135,5 +135,9 @@
         @if (session('success'))
             toastr.success("{{ session('success') }}");
         @endif()
+
+        $('tbody.tbody').on('click','tr.table-tr',function(){
+            window.location = $(this).data("url");
+        })
     </script>
 @endsection
