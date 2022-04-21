@@ -17,7 +17,7 @@
             </li>
             <li class=" nav-item {{ request()->is('pegawai*') ? 'active' : '' }}"><a href="#"><i class="ft-users"></i><span class="menu-title" data-i18n="">Pegawai</span></a>
                 <ul class="menu-content">
-                    <li class="{{ request()->is('pegawai*') ? 'active' : '' }}">
+                    <li class="{{ request()->is('pegawai') ? 'active' : '' }}">
                         <a href="{{ route('pegawai.index') }}" class="menu-item" href="">Data Pegawai</a>
                     </li>
                     <li class="{{ Request::segment(1) == 'pegawai' && Request::segment(2) == 'create' ? 'active' : '' }}">
@@ -25,7 +25,7 @@
                     </li>
                 </ul>
             </li>
-            <li class=" nav-item dropdown"><a href="#"><i class="ft-file"></i><span class="menu-title" data-i18n="">Berkas</span></a>
+            <li class=" nav-item dropdown {{ request()->is('tahor') ? 'active' : '' }}"><a href="#"><i class="ft-file"></i><span class="menu-title" data-i18n="">Berkas</span></a>
                 <ul class="menu-content">
                     <li>
                         <a href="{{ route('tahor.index') }}" class="menu-item" href="">Data Pensiun</a>
@@ -33,8 +33,8 @@
                     <li>
                         <a href="{{ route('pegawai.create') }}" class="menu-item" href="">Data Kenaikan Pangkat</a>
                     </li>
-                    <li>
-                        <a href="{{ route('pegawai.create') }}" class="menu-item" href="">Data Tahor</a>
+                    <li class="{{ request()->is('tahor') ? 'active' : '' }}">
+                        <a href="{{ route('tahor.index') }}" class="menu-item" href="">Data Tahor</a>
                     </li>
                 </ul>
             </li>

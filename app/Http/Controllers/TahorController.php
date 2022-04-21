@@ -13,7 +13,11 @@ class TahorController extends Controller
      */
     public function index()
     {
-        //
+        $title = 'Data Tahor';
+
+        return view('pages.tahor.index', [
+            'title' => $title
+        ]);
     }
 
     /**
