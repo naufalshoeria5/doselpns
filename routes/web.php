@@ -24,10 +24,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', DashboardController::class)->name('/');
 
     // route tahor
-    Route::resource('tahor',TahorController::class);
+    Route::resource('tahor', TahorController::class);
     // tahor
 
     // route Pegawai
+    Route::get('getPegawai/{nip}', [PegawaiController::class, 'getPegawai']);
+    Route::get('getBerkas/tahor/{id}', [PegawaiController::class, 'berkasTahor']);
     Route::resource('pegawai', PegawaiController::class);
     // Pegawai
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 
 class TahorController extends Controller
 {
@@ -15,8 +16,12 @@ class TahorController extends Controller
     {
         $title = 'Data Tahor';
 
+        $url = URL::to('/');
+
+
         return view('pages.tahor.index', [
-            'title' => $title
+            'title' => $title,
+            'url'   => $url
         ]);
     }
 

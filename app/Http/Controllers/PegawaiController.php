@@ -64,11 +64,15 @@ class PegawaiController extends Controller
             foreach ($request->file('file') as $key => $value) {
                 $custom_file_name = $request->nip . '_' . $jenis[$key] . '.' . $value->extension();
                 // $path = $request->file('file')->storeAs('directory_name',$custom_file_name);
-                $nama_file = $value->storeAs('uploads/berkasPegawai', $custom_file_name, 'public');
+                // $nama_file = $value->storeAs('uploads/berkasPegawai', $custom_file_name, 'public');
+
+
+                $tujuan_upload = public_path('berkas');
+                $value->move($tujuan_upload, $custom_file_name);
 
                 BerkasPegawai::create([
                     'pegawai_id'    => $pegawai->id,
-                    'nama_berkas'   => $nama_file,
+                    'nama_berkas'   => $custom_file_name,
                     'jenis'         => $jenis[$key]
                 ]);
             }
@@ -126,5 +130,34 @@ class PegawaiController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getPegawai($nip)
+    {
+        $pegawai = Pegawai::where('nip', $nip)->first();
+
+        return response()->json($pegawai);
+    }
+
+    public function berkasTahor($id)
+    {
+        $berkas = BerkasPegawai::where('pegawai_id', $id)
+            ->whereIn('jenis', [4, 7, 10, 19, 29])
+            ->get();
+
+        return response()->json($berkas);
+    }
+
+    public function berkasPensiun($id)
+    {
+        $berkas = BerkasPegawai::where('pegawai_id', $id)
+            ->where('jenis', [4, 12, 19, 10, 29])
+            ->get();
+
+        return response()->json($berkas);
+    }
+
+    public function berkasKenaikan($id)
+    {
     }
 }
