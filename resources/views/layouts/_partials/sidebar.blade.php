@@ -15,7 +15,7 @@
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class=" nav-item"><a href="{{ route('/') }}"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dashboard</span></a>
             </li>
-            <li class=" nav-item {{ request()->is('pegawai*') ? 'active' : '' }}"><a href="#"><i class="ft-users"></i><span class="menu-title" data-i18n="">Pegawai</span></a>
+            <li class=" nav-item {{ request()->is('pegawai*') ? 'active' : '' }}"><a href="#"><i class="ft-users"></i><span class="menu-title" data-i18n="">Mutasi</span></a>
                 <ul class="menu-content">
                     <li class="{{ request()->is('pegawai') ? 'active' : '' }}">
                         <a href="{{ route('pegawai.index') }}" class="menu-item" href="">Data Pegawai</a>
