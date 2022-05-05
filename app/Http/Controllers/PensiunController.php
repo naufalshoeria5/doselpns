@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 
-class TahorController extends Controller
+class PensiunController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +14,11 @@ class TahorController extends Controller
      */
     public function index()
     {
-        $title = 'Data Tahor';
+        $title = 'Data Pensiun';
 
         $url = URL::to('/');
 
-        return view('pages.tahor.index', [
+        return view('pages.pensiun.index', [
             'title' => $title,
             'url'   => $url
         ]);

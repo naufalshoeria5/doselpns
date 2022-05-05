@@ -6,7 +6,7 @@
             <div class="content-wrapper-before"></div>
             <div class="content-body">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-12 col-md-12 col-sm-12">
                         <div class="card">
                             <div class="card-header">
                                 <div class="d-flex justify-content-between align-items-center">
@@ -17,7 +17,7 @@
 
                         <div class="content-body">
                             <div class="row">
-                                <div class="col-12">
+                                <div class="col-12 col-md-12 col-sm-12">
                                     <form action="">
                                         @csrf
                                         <div class="card">
@@ -25,12 +25,14 @@
                                                 <div class="card-body card-dashboard">
                                                     <div class="form-body">
                                                         <h4 class="form-section">
-                                                            {{ $title }} </h4>
+                                                            {{ $title }}
+                                                        </h4>
 
                                                         <div class="form-group row">
-                                                            <label for="nip" class="col-md-3 col-sm-12 label-control">Nomor
-                                                                Induk Pegawai (NIP) <sup
-                                                                    class="text-danger">*</sup></label>
+                                                            <label for="nip" class="col-md-3 col-sm-12 label-control">
+                                                                Nomor Induk Pegawai (NIP) <sup
+                                                                    class="text-danger">*</sup>
+                                                            </label>
                                                             <div class="col-md-7 col-sm-12">
                                                                 <div class="input-group">
                                                                     <input type="number" id="nip" class="form-control"
@@ -38,17 +40,15 @@
                                                                         value="{{ old('nip') }}" required>
                                                                 </div>
                                                             </div>
-                                                            <button class="col-md-1 btn btn-primary" type="button"
+                                                            <button class="col-md-1 col-sm-12 btn btn-primary" type="button"
                                                                 id="btn-cari">Cari</button>
                                                         </div>
 
                                                         <div class="form-group row">
-                                                            <label for="nama"
-                                                                class="col-md-3 col-sm-12 label-control">Nama</label>
+                                                            <label for="nama" class="col-md-3 col-sm-12">Nama</label>
                                                             <div class="col-md-9 col-sm-12">
                                                                 <div class="input-group">
-                                                                    <input type="text" name="nama" id="nama"
-                                                                        class="form-control" disabled>
+                                                                    <input type="text" name="nama" id="nama" class="form-control" disabled>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -93,7 +93,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -153,7 +153,7 @@
                 success: function(data) {
                     if (data.nama != null) {
                         $.ajax({
-                            url: 'getBerkas/tahor/' + data.id,
+                            url: 'getBerkas/pensiun/' + data.id,
                             type: 'GET',
                             data: {
                                 "_token": "{{ csrf_token() }}"
@@ -182,7 +182,6 @@
                                     $('#kesatuan').val(data.kesatuan)
                                     $('#tempat_lahir').val(data.tempat_lahir)
                                     $('#tanggal_lahir').val(data.tanggal_lahir)
-
                                 } else {
                                     $('#nama').val(data.nama)
                                     $('#pangkat').val(data.pangkat)

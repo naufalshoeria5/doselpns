@@ -50,6 +50,7 @@ class PegawaiController extends Controller
             'nama'          => $request->nama,
             'pangkat'       => $request->pangkat,
             'kesatuan'      => $request->kesatuan,
+            'tempat_lahir'  => $request->tempat_lahir,
             'tanggal_lahir' => $request->tanggal_lahir
         ]);
 
@@ -159,5 +160,10 @@ class PegawaiController extends Controller
 
     public function berkasKenaikan($id)
     {
+        $berkas = BerkasPegawai::where('pegawai_id', $id)
+            ->where('jenis', [4, 12, 19, 10, 29])
+            ->get();
+
+        return response()->json($berkas);
     }
 }
