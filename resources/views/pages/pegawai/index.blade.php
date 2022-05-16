@@ -13,7 +13,7 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <h4>Data Pegawai</h4>
                                     <a href="{{ route('pegawai.create') }}" class="btn btn-info">
-                                            <div class="d-flex justify-content-between align-items-center w-full ">
+                                        <div class="d-flex justify-content-between align-items-center w-full ">
                                             <span class="mr-1">Tambah Data</span>
                                             <i class="ft-user-plus"></i>
                                         </div>
@@ -37,80 +37,45 @@
                                             </thead>
                                             <tbody class="tbody">
                                                 @php
-                                                    $i = 1
+                                                    $i = 1;
                                                 @endphp
                                                 @foreach ($pegawais as $item)
-                                                    <tr class="table-tr" data-url="{{ route('pegawai.show', $item->id)}}">
-                                                        <td class="text-center">{{ $i++ }}</td>
-                                                        <td>{{ $item->nip }}</td>
-                                                        <td>{{ $item->nama }}</td>
-                                                        <td>{{ $item->pangkat }}</td>
-                                                        <td>{{ $item->kesatuan }}</td>
-                                                        <td>{{ date('d M Y', strtotime($item->tanggal_lahir)) }}</td>
-                                                        <td><button class="btn btn-sm btn-outline-danger delete"
-                                                            value="{{ route('pegawai.destroy', $item->id) }}"
-                                                            title="Hapus">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                                                height="16" fill="none" viewBox="0 0 24 24"
-                                                                stroke="currentColor">
-                                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                                    stroke-width="2"
-                                                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                                            </svg>
-                                                        </button></td>
+                                                    <tr>
+                                                        <td class="text-center table-tr"
+                                                            data-url="{{ route('pegawai.show', $item->id) }}">
+                                                            {{ $i++ }}</td>
+                                                        <td class="table-tr"
+                                                            data-url="{{ route('pegawai.show', $item->id) }}">
+                                                            {{ $item->nip }}</td>
+                                                        <td class="table-tr"
+                                                            data-url="{{ route('pegawai.show', $item->id) }}">
+                                                            {{ $item->nama }}</td>
+                                                        <td class="table-tr"
+                                                            data-url="{{ route('pegawai.show', $item->id) }}">
+                                                            {{ $item->pangkat }}</td>
+                                                        <td class="table-tr"
+                                                            data-url="{{ route('pegawai.show', $item->id) }}">
+                                                            {{ $item->kesatuan }}</td>
+                                                        <td class="table-tr"
+                                                            data-url="{{ route('pegawai.show', $item->id) }}">
+                                                            {{ date('d M Y', strtotime($item->tanggal_lahir)) }}</td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-outline-danger delete"
+                                                                value="{{ route('pegawai.destroy', $item->id) }}"
+                                                                title="Hapus">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                    height="16" fill="none" viewBox="0 0 24 24"
+                                                                    stroke="currentColor">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                                        stroke-width="2"
+                                                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                                </svg>
+                                                            </button>
+                                                        </td>
                                                     </tr>
                                                 @endforeach
-                                            </tfoot>
+                                                </tfoot>
                                         </table>
-                                        {{-- <table class="table-striped table-bordered datatable">
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-left align-middle" style="width: 7%">
-                                                        #
-                                                    </th>
-                                                    <th>
-                                                        NIK
-                                                    </th>
-                                                    <th>
-                                                        Nama
-                                                    </th>
-                                                    <th>
-                                                        Jabatan
-                                                    </th>
-                                                    <th>
-                                                        Bagian
-                                                    </th>
-                                                    <th>ab</th>
-                                                    <th>b</th>
-                                                    <th>c</th>
-                                                    <th>d</th>
-                                                    <th>e</th>
-                                                    <th class="text-center">
-                                                        Aksi
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @for ($i = 1; $i <= 100; $i++)                                                    
-                                                <tr>
-                                                    <td>{{ $i }}</td>
-                                                    <td>14132</td>
-                                                    <td>Naufal Hidayah Surya</td>
-                                                    <td>Letkol</td>
-                                                    <td>Bagian</td>
-                                                    <td>a</td>
-                                                    <td>a</td>
-                                                    <td>a</td>
-                                                    <td>a</td>
-                                                    <td>a</td>
-                                                    <td class="text-center">
-                                                        <button class="btn btn-primary">?</button>
-                                                        <button class="btn btn-danger">?</button>
-                                                    </td>
-                                                </tr>
-                                                @endfor
-                                            </tbody>
-                                        </table> --}}
                                     </div>
                                 </div>
                             </div>
@@ -134,9 +99,42 @@
         // toastr.success("a");
         @if (session('success'))
             toastr.success("{{ session('success') }}");
-        @endif()
+        @endif ()
 
-        $('tbody.tbody').on('click','tr.table-tr',function(){
+        $('body').on('click', '.delete', function() {
+            let url = $(this).val()
+            
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            })
+
+            Swal.fire({
+                title:'Hapus?',
+                text:'Setelah dihapus, tidak akan bisa dibatalkan!',
+                icon:'warning',
+                showCancelButton: true
+            })
+            .then((result) => {
+                if (result.value) {
+                    $(this).parent('td').parent('tr').remove();
+                    $.ajax({
+                        type: 'DELETE',
+                        url: url,
+                        dataType: 'json',
+                        success: function(data){
+                            swal.fire('Deleted!', 'Data Berhasil Dihapus','success')
+                        },
+                        error: function(data){
+                            console.log('Error :' + data);
+                        }
+                    })
+                }
+            })
+        })
+
+        $('tbody.tbody').on('click', 'td.table-tr', function() {
             window.location = $(this).data("url");
         })
     </script>

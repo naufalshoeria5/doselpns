@@ -41,6 +41,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('getPegawai/{nip}', [PegawaiController::class, 'getPegawai']);
     Route::get('getBerkas/tahor/{id}', [PegawaiController::class, 'berkasTahor']);
     Route::get('getBerkas/pensiun/{id}', [PegawaiController::class, 'berkasPensiun']);
+    Route::delete('pegawaiBerkas/hapus/{id}',[PegawaiController::class, 'hapusBerkas'])->name('pegawaiBerkas.destroy');
     Route::resource('pegawai', PegawaiController::class);
     // Pegawai
 

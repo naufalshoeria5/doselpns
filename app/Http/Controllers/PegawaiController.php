@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\BerkasPegawai;
 use App\Models\Pegawai;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
+use File;
 
 class PegawaiController extends Controller
 {
@@ -130,7 +133,20 @@ class PegawaiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pegawai = Pegawai::find($id);
+        if ($pegawai->berkas) {
+            $berkas = BerkasPegawai::where('pegawai_id', $id);
+            if ($berkas) {
+                foreach ($berkas->get() as $value) {
+                    if (File::exists(public_path('berkas/' . $value->nama_berkas))) {
+                        File::delete(public_path('berkas/' . $value->nama_berkas));
+                    }
+                }
+                $berkas->delete();
+            }
+        }
+        $pegawai->delete();
+        return response()->json(['success' => 'Data Pegawai Telah Dihapus']);
     }
 
     public function getPegawai($nip)
@@ -165,5 +181,17 @@ class PegawaiController extends Controller
             ->get();
 
         return response()->json($berkas);
+    }
+
+    public function hapusBerkas($id)
+    {
+        $berkas = BerkasPegawai::find($id);
+
+        if (File::exists(public_path('berkas/' . $berkas->nama_berkas))) {
+            File::delete(public_path('berkas/' . $berkas->nama_berkas));
+        }
+        $berkas->delete();
+
+        return response()->json(['success' => 'Data Telah Dihapus']);
     }
 }
