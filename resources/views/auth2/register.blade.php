@@ -6,13 +6,17 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="description" content="Chameleon Admin is a modern Bootstrap 4 webapp &amp; admin dashboard html template with a large number of components, elegant design, clean and organized code.">
-    <meta name="keywords" content="admin template, Chameleon admin template, dashboard template, gradient admin template, responsive admin template, webapp, eCommerce dashboard, analytic dashboard">
+    <meta name="description"
+        content="Chameleon Admin is a modern Bootstrap 4 webapp &amp; admin dashboard html template with a large number of components, elegant design, clean and organized code.">
+    <meta name="keywords"
+        content="admin template, Chameleon admin template, dashboard template, gradient admin template, responsive admin template, webapp, eCommerce dashboard, analytic dashboard">
     <meta name="author" content="ThemeSelect">
     <title>Halaman Daftar - Dosel PNS</title>
     <link rel="apple-touch-icon" href="app-assets/images/logo/logo1.png">
     <link rel="shortcut icon" type="image/x-icon" href="app-assets/images/logo/logo1.png">
-    <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700"
+        rel="stylesheet">
 
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/vendors.min.css">
@@ -40,12 +44,14 @@
 
 <!-- BEGIN: Body-->
 
-<body class="vertical-layout vertical-menu 1-column  bg-full-screen-image blank-page blank-page" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="1-column">
+<body class="vertical-layout vertical-menu 1-column  bg-full-screen-image blank-page blank-page" data-open="click"
+    data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="1-column">
     <!-- BEGIN: Content-->
     <div class="app-content content">
         <div class="content-wrapper">
             <div class="content-wrapper-before"></div>
             <div class="content-header row">
+                {{ __('Register') }}
             </div>
             <div class="content-body">
                 <section class="flexbox-container">
@@ -54,7 +60,8 @@
                             <div class="card border-grey border-lighten-3 px-1 py-1 m-0">
                                 <div class="card-header border-0">
                                     <div class="text-center mb-1">
-                                        <img src="app-assets/images/logo/logo1.png" width="50%" alt="logo vijaya kusuma">
+                                        <img src="app-assets/images/logo/logo1.png" width="50%"
+                                            alt="logo vijaya kusuma">
                                     </div>
                                     <div class="font-large-1  text-center">
                                         Daftar Akun Dosel PNS
@@ -63,28 +70,38 @@
                                 <div class="card-content">
 
                                     <div class="card-body">
-                                        <form class="form-horizontal" action="index.html" novalidate>
+                                        <form method="POST" action="{{ route('register') }}">
+                                            @csrf
                                             <fieldset class="form-group position-relative has-icon-left">
-                                                <input type="text" class="form-control round" id="user-name" placeholder="Masukan Username" required>
+                                                <input type="text" class="form-control round" id="user-name"
+                                                    placeholder="Masukan Username" required>
+                                                @error('name')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
                                                 <div class="form-control-position">
                                                     <i class="ft-user"></i>
                                                 </div>
                                             </fieldset>
                                             <fieldset class="form-group position-relative has-icon-left">
-                                                <input type="email" class="form-control round" id="user-email" placeholder="Masukan Alamat Email" required>
+                                                <input type="email" class="form-control round" id="user-email"
+                                                    placeholder="Masukan Alamat Email" required>
                                                 <div class="form-control-position">
                                                     <i class="ft-mail"></i>
                                                 </div>
                                             </fieldset>
                                             <fieldset class="form-group position-relative has-icon-left">
-                                                <input type="password" class="form-control round" id="user-password" placeholder="Masukan Password" required>
+                                                <input type="password" class="form-control round" id="user-password"
+                                                    placeholder="Masukan Password" required>
                                                 <div class="form-control-position">
                                                     <i class="ft-lock"></i>
                                                 </div>
                                             </fieldset>
 
                                             <div class="form-group text-center">
-                                                <button type="submit" class="btn round btn-block btn-glow btn-bg-gradient-x-purple-blue col-12 mr-1 mb-1">Daftar</button>
+                                                <button type="submit"
+                                                    class="btn round btn-block btn-glow btn-bg-gradient-x-purple-blue col-12 mr-1 mb-1">Daftar</button>
                                             </div>
 
                                         </form>

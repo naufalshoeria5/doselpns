@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\BerkasPegawai;
 use App\Models\Pegawai;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 use File;
 

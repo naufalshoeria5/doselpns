@@ -48,7 +48,7 @@ class LoginController extends Controller
             'password'  => 'required',
         ]);
 
-        if (auth()->attempt(array('nip' => $input['nip'], 'password' => $input['password'],))) {
+        if (auth()->attempt(array('nip' => $input['nip'], 'password' => $input['password'], 'status' => '1'))) {
             return redirect()->route('/');
         } else {
             session()->flash('error', 'Gaggal Login, Silahkan Hubungi Admin');

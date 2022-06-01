@@ -39,7 +39,6 @@
                                     <div class="card">
                                         <div class="card-content collapse show">
                                             <div class="card-body card-dashboard">
-
                                                 <div class="form-body">
                                                     <h4 class="form-section"><i class="ft-clipboard"></i>
                                                         {{ $title }}
@@ -50,11 +49,10 @@
                                                         </label>
                                                         <div class="col-md-9">
                                                             <div class="input-group">
-                                                                <input type="text" id="nama"
+                                                                <input type="text" id="nip"
                                                                     class="form-control @error('nip') is-invalid @enderror"
                                                                     placeholder="Masukan Nomor Induk Pegawai" name="nip"
                                                                     required value="{{ old('nip', @$pegawai->nip) }}">
-
                                                             </div>
                                                             @error('nip')
                                                                 <span

@@ -18,7 +18,7 @@
                                 <div class="card-content collapse show height-100">
                                     <div class="card-body p-2">
                                         <h4 class="font-large-2 text-bold-400 text-info">
-                                           11 <i class="ft-user float-right"></i>
+                                            {{ $totalPegawai }} <i class="ft-user float-right"></i>
                                         </h4>
                                     </div>
                                 </div>
@@ -30,13 +30,13 @@
                             <div class="card pull-up  rounded-0">
                                 <div class="card-header">
                                     <h4 class="card-title">
-                                        Divisi
+                                        Total User
                                     </h4>
                                 </div>
                                 <div class="card-content collapse show height-100">
                                     <div class="card-body p-2">
                                         <h4 class="font-large-2 text-bold-400 text-info">
-                                            11 <i class="ft-check-circle float-right"></i>
+                                            {{ $totalUser }} <i class="ft-check-circle float-right"></i>
                                         </h4>
                                     </div>
 
@@ -44,7 +44,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-md-12 col-lg-3">
+                    {{-- <div class="col-md-12 col-lg-3">
                         <a href="#">
                             <div class="card pull-up rounded-0">
                                 <div class="card-header">
@@ -62,26 +62,84 @@
                                 </div>
                             </div>
                         </a>
-                    </div>
-                    {{-- <div class="col-md-12 col-lg-3">
-                        <a href="#">
-                            <div class="card pull-up  rounded-0">
-                                <div class="card-header">
-                                    <h4 class="card-title">
-                                        Total Membership
-                                    </h4>
-                                </div>
-                                <div class="card-content collapse show height-100">
-                                    <div class="card-body p-2">
-                                        <h4 class="font-large-2 text-bold-400 text-info">
-                                            111<i class="ft-award float-right"></i>
-                                        </h4>
+                    </div> --}}
+                    <div class="col-md-12 col-lg-8">
+                        <div class="card">
+                            <div class="card-header p-1">
+                                <h4 class="card-title float-left">Jumlah Berkas <span
+                                        class="blue-grey lighten-2 font-small-3 mb-0">Dosel PNS</span></h4>
+                            </div>
+                            <div class="card-content collapse show">
+                                <div class="card-footer text-center p-1">
+                                    <div class="row">
+                                        <div
+                                            class="col-md-3 col-12 border-right-blue-grey border-right-lighten-5 text-center">
+                                            <p class="blue-grey lighten-2 mb-0">Semua</p>
+                                            <p class="font-medium-5 text-bold-400">{{ $totalBerkas }}</p>
+                                        </div>
+                                        <div
+                                            class="col-md-3 col-12 border-right-blue-grey border-right-lighten-5 text-center">
+                                            <p class="blue-grey lighten-2 mb-0">Pensiun</p>
+                                            <p class="font-medium-5 text-bold-400">{{ $totalPensiun }}</p>
+                                        </div>
+                                        <div
+                                            class="col-md-3 col-12 border-right-blue-grey border-right-lighten-5 text-center">
+                                            <p class="blue-grey lighten-2 mb-0">Kenaikan Pangkat</p>
+                                            <p class="font-medium-5 text-bold-400">{{ $totalKenaikan }}</p>
+                                        </div>
+                                        <div class="col-md-3 col-12 text-center">
+                                            <p class="blue-grey lighten-2 mb-0">Tahor</p>
+                                            <p class="font-medium-5 text-bold-400">{{ $totalTahor }}</p>
+                                        </div>
                                     </div>
-
+                                    <hr>
+                                    <span class="text-muted"><a href="#" class="danger darken-2">Dosel PNS</a>
+                                        Statistik</span>
                                 </div>
                             </div>
-                        </a>
-                    </div> --}}
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card pull-up bg-gradient-directional-light">
+                                    <div class="card-header bg-hexagons">
+                                        <h4 class="card-title info">Analisis</h4>
+                                        <a class="heading-elements-toggle"><i
+                                                class="la la-ellipsis-v font-medium-3"></i></a>
+                                        <div class="heading-elements">
+                                            <ul class="list-inline mb-0">
+                                                <li>
+                                                    <a class="btn btn-sm btn-white info box-shadow-1 round btn-min-width pull-right"
+                                                        href="#" target="_blank">Report <i
+                                                            class="ft-bar-chart pl-1"></i></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="card-content collapse show bg-hexagons">
+                                        <div class="card-body">
+                                            <div class="media d-flex">
+                                                <div class="align-self-center width-100">
+                                                    <div id="Analytics-donut-chart" class="height-100 donutShadow"></div>
+                                                </div>
+                                                <div class="media-body text-right mt-1">
+                                                    <h3 class="font-large-2 info">
+                                                        {{ $totalBerkasBaru > 99 ? $totalBerkasBaru . '+' : $totalBerkasBaru }}
+                                                    </h3>
+                                                    <h6 class="mt-1"><span class="text-muted info">Berkas baru
+                                                            dalam
+                                                            <a href="#" class="darken-2 info">30 Hari Terakhir</a></span>
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 <!-- Bordered striped end -->
                 <!-- Chat and Recent Projects -->

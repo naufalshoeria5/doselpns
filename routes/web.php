@@ -5,6 +5,7 @@ use App\Http\Controllers\KenaikanController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\PensiunController;
 use App\Http\Controllers\TahorController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +21,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
-
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/', DashboardController::class)->name('/');
@@ -36,6 +36,8 @@ Route::middleware(['auth'])->group(function () {
     //route kenaikan
     Route::resource('kenaikan', KenaikanController::class);
     //route kenaikan
+
+    Route::resource('user',UserController::class);
 
     // route Pegawai
     Route::get('getPegawai/{nip}', [PegawaiController::class, 'getPegawai']);

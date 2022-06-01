@@ -45,7 +45,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item"><a href="{{ route('/') }}"><i class="ft-user"></i><span
+            <li class="nav-item"><a href="{{ route('user.index') }}"><i class="ft-user"></i><span
                         class="menu-title" data-i18n="">User</span></a></li>
         </ul>
     </div>
