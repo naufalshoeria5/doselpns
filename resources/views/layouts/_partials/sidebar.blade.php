@@ -18,35 +18,55 @@
             <li class="nav-item {{ request()->is('/') ? 'active' : '' }}"><a href="{{ route('/') }}"><i
                         class="ft-home"></i><span class="menu-title" data-i18n="">Dashboard</span></a>
             </li>
-            <li class=" nav-item {{ request()->is('pegawai*') ? 'active' : '' }}"><a href="#"><i
-                        class="ft-users"></i><span class="menu-title" data-i18n="">Mutasi</span></a>
-                <ul class="menu-content">
-                    <li class="{{ request()->is('pegawai') ? 'active' : '' }}">
-                        <a href="{{ route('pegawai.index') }}" class="menu-item" href="">Data Pegawai</a>
-                    </li>
-                    <li
-                        class="{{ Request::segment(1) == 'pegawai' && Request::segment(2) == 'create' ? 'active' : '' }}">
-                        <a href="{{ route('pegawai.create') }}" class="menu-item" href="">Tambah Pegawai</a>
-                    </li>
-                </ul>
-            </li>
-            <li class=" nav-item dropdown {{ request()->is('tahor') && request()->is('pensiun') ? 'active' : '' }}">
-                <a href="#"><i class="ft-file"></i><span class="menu-title" data-i18n="">Berkas</span></a>
-                <ul class="menu-content">
-                    <li class="{{ request()->is('pensiun') ? 'active' : '' }}">
-                        <a href="{{ route('pensiun.index') }}" class="menu-item">Data Pensiun</a>
-                    </li>
-                    <li class="{{ request()->is('kenaikan') ? 'active' : '' }}">
-                        <a href="{{ route('kenaikan.index') }}" class="menu-item">
-                            Data Kenaikan Pangkat</a>
-                    </li>
-                    <li class="{{ request()->is('tahor') ? 'active' : '' }}">
-                        <a href="{{ route('tahor.index') }}" class="menu-item" >Data Tahor</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item"><a href="{{ route('user.index') }}"><i class="ft-user"></i><span
-                        class="menu-title" data-i18n="">User</span></a></li>
+            @role('karyawan')
+                <li class="nav-item {{ request()->is('pensiun') ? 'active' : '' }}">
+                    <a href="{{ route('pensiun.index') }}" class="menu-item"><i class="ft-briefcase"></i><span>Berkas
+                            Pensiun</span></a>
+                </li>
+                <li class="nav-item {{ request()->is('kenaikan') ? 'active' : '' }}">
+                    <a href="{{ route('kenaikan.index') }}" class="menu-item">
+                        <i class="ft-award"></i><span>Berkas KP</span></a>
+                </li>
+                <li class="nav-item {{ request()->is('tahor') ? 'active' : '' }}">
+                    <a href="{{ route('tahor.index') }}" class="menu-item"><i class="ft-layers"></i><span>Berkas
+                            Tahor</span></a>
+                </li>
+            @endrole
+            @role('super-admin|admin')
+                <li class=" nav-item {{ request()->is('pegawai*') ? 'active' : '' }}"><a href="#"><i
+                            class="ft-users"></i><span class="menu-title" data-i18n="">Mutasi</span></a>
+                    <ul class="menu-content">
+                        <li class="{{ request()->is('pegawai') ? 'active' : '' }}">
+                            <a href="{{ route('pegawai.index') }}" class="menu-item" href="">Data Pegawai</a>
+                        </li>
+                        <li
+                            class="{{ Request::segment(1) == 'pegawai' && Request::segment(2) == 'create' ? 'active' : '' }}">
+                            <a href="{{ route('pegawai.create') }}" class="menu-item" href="">Tambah Pegawai</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class=" nav-item dropdown {{ request()->is('tahor') && request()->is('pensiun') ? 'active' : '' }}">
+                    <a href="#"><i class="ft-file"></i><span class="menu-title" data-i18n="">Berkas</span></a>
+                    <ul class="menu-content">
+                        <li class="{{ request()->is('pensiun') ? 'active' : '' }}">
+                            <a href="{{ route('pensiun.index') }}" class="menu-item">Data Pensiun</a>
+                        </li>
+                        <li class="{{ request()->is('kenaikan') ? 'active' : '' }}">
+                            <a href="{{ route('kenaikan.index') }}" class="menu-item">
+                                Data Kenaikan Pangkat</a>
+                        </li>
+                        <li class="{{ request()->is('tahor') ? 'active' : '' }}">
+                            <a href="{{ route('tahor.index') }}" class="menu-item">Data Tahor</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item {{ request()->is('user*') ? 'active' : '' }}"">
+                        <a href=" {{ route('user.index') }}"><i class="ft-user"></i>
+                    <span class="menu-title" data-i18n="">User</span>
+                    </a>
+                </li>
+            @endrole
         </ul>
     </div>
 </div>

@@ -100,6 +100,27 @@
                                                             @enderror
                                                         </div>
                                                     </div>
+                                                    
+                                                    <div class="form-group row">
+                                                        <label for="" class="col-md-3 label-control">
+                                                            Role User <sup class="text-danger"></sup>
+                                                        </label>
+                                                        <div class="col-md-9">
+                                                            <div class="input-group">
+                                                                <select name="role" id="" class="form-control" required>
+                                                                    <option value="#" selected disabled>Pilih role User</option>
+                                                                    @foreach ($role as $item)
+                                                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                            @error('role')
+                                                                <span class="text-danger">
+                                                                    {{ $errors->first('role') }}
+                                                                </span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
 
                                                     <div class="form-group row">
                                                         <label for="" class="col-md-3 label-control">
@@ -110,7 +131,7 @@
                                                                 <input type="password" id="password"
                                                                     class="form-control @error('password') is-invalid @enderror"
                                                                     placeholder="Masukan password" name="password" required
-                                                                    value="{{ old('password', @$user->password) }}">
+                                                                    value="{{ old('password') }}">
                                                             </div>
                                                             @error('password')
                                                                 <span class="text-danger">

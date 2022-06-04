@@ -45,7 +45,7 @@
                                                     </h4>
                                                     <div class="form-group row">
                                                         <label class="col-md-3 label-control" for="projectinput5">
-                                                            NIP <sup class="text-required">*</sup>
+                                                            NIP <sup class="text-danger">*</sup>
                                                         </label>
                                                         <div class="col-md-9">
                                                             <div class="input-group">
@@ -62,7 +62,7 @@
                                                     </div>
                                                     <div class="form-group row">
                                                         <label class="col-md-3 label-control" for="projectinput5">
-                                                            Nama Pegawai <sup class="text-required">*</sup>
+                                                            Nama Pegawai <sup class="text-danger">*</sup>
                                                         </label>
                                                         <div class="col-md-9">
                                                             <div class="input-group">
@@ -80,7 +80,7 @@
                                                     </div>
                                                     <div class="form-group row">
                                                         <label class="col-md-3 label-control" for="projectinput5">
-                                                            Pangkat <sup class="text-required">*</sup>
+                                                            Pangkat <sup class="text-danger">*</sup>
                                                         </label>
                                                         <div class="col-md-9">
                                                             <div class="input-group">
@@ -98,7 +98,7 @@
                                                     </div>
                                                     <div class="form-group row">
                                                         <label class="col-md-3 label-control" for="projectinput5">
-                                                            Kesatuan <sup class="text-required">*</sup>
+                                                            Jabatan / Kesatuan <sup class="text-danger">*</sup>
                                                         </label>
                                                         <div class="col-md-9">
                                                             <div class="input-group">
@@ -115,7 +115,7 @@
                                                     </div>
                                                     <div class="form-group row">
                                                         <label class="col-md-3 label-control" for="projectinput5">
-                                                            Tempat / Tanggal Lahir <sup class="text-required">*</sup>
+                                                            Tempat / Tanggal Lahir <sup class="text-danger">*</sup>
                                                         </label>
                                                         <div class="col-md-5">
                                                             <input type="text" class="form-control"
@@ -203,6 +203,7 @@
                                                 <div class="form-body">
                                                     <h4 class="form-section"><i class="ft-file"></i>
                                                         Tambah Berkas
+                                                        <small class="text-danger">(Format file : csv,txt,xlx,xls,pdf,xlsx)</small>
                                                     </h4>
                                                     @php
                                                         $i = 1;

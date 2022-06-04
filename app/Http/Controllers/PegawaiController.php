@@ -121,7 +121,42 @@ class PegawaiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pegawai = Pegawai::find($id);
+
+        $pegawai->nip       = $request->nip;
+        $pegawai->nama      = $request->nama;
+        $pegawai->pangkat   = $request->pangkat;
+        $pegawai->kesatuan  = $request->kesatuan;
+        $pegawai->tempat_lahir = $request->tempat_lahir;
+        $pegawai->tanggal_lahir = $request->tanggal_lahir;
+
+        $pegawai->save();
+
+        $validatedData = $request->validate([
+            'file.*' => 'mimes:csv,txt,xlx,xls,pdf,xlsx'
+        ]);
+
+        if ($request->hasfile('file')) {
+            $jenis  = $request->jenis;
+
+            foreach ($request->file('file') as $key => $value) {
+                $custom_file_name = $request->nip . '_' . $jenis[$key] . '.' . $value->extension();
+                // $path = $request->file('file')->storeAs('directory_name',$custom_file_name);
+                // $nama_file = $value->storeAs('uploads/berkasPegawai', $custom_file_name, 'public');
+
+
+                $tujuan_upload = public_path('berkas');
+                $value->move($tujuan_upload, $custom_file_name);
+
+                BerkasPegawai::create([
+                    'pegawai_id'    => $pegawai->id,
+                    'nama_berkas'   => $custom_file_name,
+                    'jenis'         => $jenis[$key]
+                ]);
+            }
+        }
+
+        return redirect('pegawai')->withSuccess('Pegawai Telah Berhasil Diperbarui');
     }
 
     /**
@@ -167,16 +202,16 @@ class PegawaiController extends Controller
     public function berkasPensiun($id)
     {
         $berkas = BerkasPegawai::where('pegawai_id', $id)
-            ->where('jenis', [4, 12, 19, 10, 29])
+            ->whereIn('jenis', [7,8,9,10,11,13,29,32])
             ->get();
-
+            
         return response()->json($berkas);
     }
 
     public function berkasKenaikan($id)
     {
         $berkas = BerkasPegawai::where('pegawai_id', $id)
-            ->where('jenis', [4, 12, 19, 10, 29])
+            ->whereIn('jenis', [5,7,10,12,13,16,17,18,19,27])
             ->get();
 
         return response()->json($berkas);

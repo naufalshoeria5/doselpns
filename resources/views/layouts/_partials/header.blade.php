@@ -200,14 +200,14 @@
                                         src="{{ asset('app-assets/images/portrait/small/avatar-1.png') }}"
                                         alt="avatar">
                                         <span class="user-name text-bold-700 ml-1">
-                                        John Doe
+                                        {{ Auth::user()->name }}
                                         </span>
                                     </span>
                                 </a>
                                 <div class="dropdown-divider">
                                 </div>
                                 <a class="dropdown-item"
-                                    href="user-profile.html">
+                                    href="{{ route('user.edit',Auth::user()->id ) }}">
                                     <i class="ft-user"></i> Edit Profile
                                 </a>
                                 <div class="dropdown-divider"></div>

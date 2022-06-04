@@ -32,7 +32,6 @@
                                                     <th>Nip</th>
                                                     <th>Nama</th>
                                                     <th>Email</th>
-                                                    <th class="text-center">Status</th>
                                                     <th class="text-center" style="width: 10%;">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -43,16 +42,10 @@
                                                         <td>{{ $item->nip }}</td>
                                                         <td>{{ $item->name }}</td>
                                                         <td>{{ $item->email }}</td>
-                                                        <td class="text-center">
-                                                            @if ($item->status == 1)
-                                                                <span class="badge badge-success">Aktif</span>
-                                                            @else
-                                                                <span class="badge badge-info">Menunggu Konfirmasi</span>
-                                                            @endif
-                                                        </td>
                                                         <td>
                                                             <div class="d-flex justify-content-between">
-                                                                <a href="" class="btn btn-sm btn-outline-success mr-1">
+                                                                <a href="{{ route('user.edit',$item->id) }}" class="btn btn-sm btn-outline-success mr-1"
+                                                                    title="Edit User">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16"
                                                                         height="16" fill="none" viewBox="0 0 24 24"
                                                                         stroke="currentColor" stroke-width="2">
@@ -61,7 +54,8 @@
                                                                     </svg>
                                                                 </a>
                                                                 <button class="btn btn-sm btn-outline-danger delete"
-                                                                    title="Hapus">
+                                                                    title="Hapus User"
+                                                                    value="{{ route('user.destroy', $item->id) }}}">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16"
                                                                         height="16" fill="none" viewBox="0 0 24 24"
                                                                         stroke="currentColor">
@@ -96,9 +90,44 @@
             timer: false
         });
 
-        // toastr.success("a");
         @if (session('success'))
             toastr.success("{{ session('success') }}");
         @endif ()
+
+
+        $('.delete').on('click', function() {
+            let url = $(this).val()
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            })
+
+            Swal.fire({
+                    title: 'Hapus?',
+                    text: 'Setelah dihapus, tidak akan bisa dibatalkan!',
+                    icon: 'warning',
+                    showCancelButton: true
+                })
+
+                .then((result) => {
+                    if (result.value) {
+                        $(this).parent('div').parent('td').parent('tr').remove()
+                        $.ajax({
+                            type: 'DELETE',
+                            url: url,
+                            dataType: 'json',
+                            success: function(data) {
+                                Swal.fire('Deleted', 'Data Berhasil Dihapus', 'success')
+                            },
+                            error: function(data) {
+                                console.log('Error :' + data);
+                            }
+                        })
+                    }
+                })
+
+        })
     </script>
 @endsection

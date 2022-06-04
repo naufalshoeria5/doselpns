@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Contracts\Role;
+use Spatie\Permission\Models\Role as ModelsRole;
 
 class UserController extends Controller
 {
@@ -32,8 +34,11 @@ class UserController extends Controller
     public function create()
     {
         $title = 'Tambah Data User';
+        $role = ModelsRole::where('id', '!=', 1)->get();
+
         return view('pages.user.form', [
             'title' => $title,
+            'role'  => $role
         ]);
     }
 
@@ -43,15 +48,21 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        User::create([
+        $user = User::create([
             'nip' => $request->nip,
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'status'    => 1
         ]);
+
+        if ($request->role == 2) {
+            $user->assignRole('admin');
+        }else{
+            $user->assignRole('karyawan');
+        }
 
         return redirect('user')->withSuccess('User Berhasil Ditambahkan');
     }
@@ -75,7 +86,12 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        $title = 'Edit Data User ' . $user->name;
+        return view('pages.user.form', [
+            'title' => $title,
+            'user' => $user
+        ]);
     }
 
     /**
@@ -87,7 +103,18 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+
+        if ($user) {
+            $user->nip = $request->nip;
+            $user->name = $request->name;
+            $user->email = $request->email;
+            if ($request->password) {
+                $user->password = bcrypt($request->password);
+            }
+            $user->save();
+        }
+        return redirect('user')->withSuccess('User Berhasil Diperbarui');
     }
 
     /**
@@ -98,6 +125,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+
+        $user->delete();
+
+        return response()->json(['success' => 'Data Telah Dihapus']);
     }
 }

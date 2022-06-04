@@ -20,20 +20,10 @@ class UserTableSeeder extends Seeder
             'nip'       => '2113171036',
             'email'     => 'admin@admin.com',
             'status'    => '1',
-            'password'  => bcrypt('admin'),
+            'password'  => bcrypt('ControlLife!12'),
         ]);
 
         $user->assignRole('super-admin');
-
-        $user = User::create([
-            'name'      => 'operator',
-            'nip'       => '1234567',
-            'email'     => 'operator@operator.com',
-            'status'    => '1',
-            'password'  => bcrypt('123456'),
-        ]);
-
-        $user->assignRole('admin');
  
     }
 }

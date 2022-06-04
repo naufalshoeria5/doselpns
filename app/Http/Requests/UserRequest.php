@@ -27,7 +27,8 @@ class UserRequest extends FormRequest
             'nip' => ['required', 'string', 'max:255', 'unique:users'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'role' => ['required'],
+            'password' => ['required', 'string', 'min:5'],
         ];
 
         return $rules;
@@ -35,11 +36,14 @@ class UserRequest extends FormRequest
 
     public function messages()
     {
-        return[
-            'nip.required'      => 'Foto Wajib Diisi Dan Wajib Unik',
-            'name.required'     => 'Nama Wajib Diisi',
-            'email'             => 'Email Wajib Diisi Dan Format Email',
-            'password'          => 'Password Wajib Diisi'
-        ]   
+        return [
+            'nip.required'      => 'Nip wajib diisi dan wajib unique',
+            'nip.unique'        => 'Nip ini telah digunakan',
+            'name.required'     => 'Nama wajib diisi',
+            'email.required'    => 'Email wajib diisi dan format email',
+            'role.required'     => 'Role wajib diisi',
+            'password.required' => 'Password wajib diisi',
+            'password.min'      => 'Password minimal 5 huruf'
+        ];
     }
 }

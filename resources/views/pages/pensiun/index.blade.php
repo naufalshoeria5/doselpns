@@ -48,7 +48,8 @@
                                                             <label for="nama" class="col-md-3 col-sm-12">Nama</label>
                                                             <div class="col-md-9 col-sm-12">
                                                                 <div class="input-group">
-                                                                    <input type="text" name="nama" id="nama" class="form-control" disabled>
+                                                                    <input type="text" name="nama" id="nama"
+                                                                        class="form-control" disabled>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -82,8 +83,8 @@
                                                             </label>
                                                             <div class="col-md-4 col-sm-12">
                                                                 <div class="input-group">
-                                                                    <input type="text" name="tempat_lahir"
-                                                                        id="tempat_lahir" class="form-control" disabled>
+                                                                    <input type="text" name="tempat_lahir" id="tempat_lahir"
+                                                                        class="form-control" disabled>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-5 col-sm-12">
@@ -164,17 +165,17 @@
                                     let i = 1;
                                     $.each(berkas, function(key, item) {
                                         $('#berkas').append('\
-                                                        <tr>\
-                                                            <td class="text-center" style="width: 8%">' + i + '</td>\
-                                                            <td>' + item.nama_berkas + '</td>\
-                                                            <td>' + cekJenis(item.jenis) + '</td>\
-                                                            <td>\
-                                                                <a href="' + url + item.nama_berkas + '"\
-                                                                    target="_blank" class="btn btn-primary"><i\
-                                                                        class="ft-download"></i></a>\
-                                                            </td>\
-                                                        </tr>\
-                                                        ');
+                                                                <tr>\
+                                                                    <td class="text-center" style="width: 8%">' + i + '</td>\
+                                                                    <td>' + item.nama_berkas + '</td>\
+                                                                    <td>' + cekJenis(item.jenis) + '</td>\
+                                                                    <td>\
+                                                                        <a href="' + url + item.nama_berkas + '"\
+                                                                            target="_blank" class="btn btn-primary"><i\
+                                                                                class="ft-download"></i></a>\
+                                                                    </td>\
+                                                                </tr>\
+                                                                ');
                                         i++;
                                     })
                                     $('#nama').val(data.nama)
