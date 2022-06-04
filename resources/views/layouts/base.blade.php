@@ -53,12 +53,6 @@
     <link rel="stylesheet" href="{{ asset('app-assets/plugins/dropify/dist/css/dropify.min.css') }}">
     {{-- gijgo datepicker --}}
     <link rel="stylesheet" type="text/css"
-        href="{{ asset('app-assets/vendors/css/pickers/daterange/daterangepicker.css') }}">
-
-    <link rel="stylesheet"
-        href="{{ asset('app-assets/plugins/datetimepicker/css/bootstrap-material-datetimepicker.css') }}" />
-
-    <link rel="stylesheet" type="text/css"
         href="{{ asset('app-assets/plugins/tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4.css') }}">
 
     {{-- Icon --}}
@@ -88,24 +82,6 @@
     @yield('content')
 
     @include('layouts/_partials/footer')
-
-    {{-- <!-- BEGIN: Vendor JS-->
-    <script src="app-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
-    <!-- BEGIN Vendor JS-->
-
-    <!-- BEGIN: Page Vendor JS-->
-    <script src="app-assets/vendors/js/charts/chartist.min.js" type="text/javascript"></script>
-    <script src="app-assets/vendors/js/charts/chartist-plugin-tooltip.min.js" type="text/javascript"></script>
-    <!-- END: Page Vendor JS-->
-
-    <!-- BEGIN: Theme JS-->
-    <script src="{{ asset('app-assets/js/core/app-menu.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('app-assets/js/core/app.js') }}" type="text/javascript"></script>
-    <!-- END: Theme JS-->
-
-    <!-- BEGIN: Page JS-->
-    <script src="{{ asset('app-assets/js/scripts/pages/dashboard-analytics.js') }}" type="text/javascript"></script>
-    <!-- END: Page JS--> --}}
 
     <!-- BEGIN: Vendor JS-->
     <script src="{{ asset('js/app.js') }}"></script>
@@ -147,46 +123,20 @@
     <!-- BEGIN: Page Vendor JS-->
     <!-- END: Page Vendor JS-->
 
-    {{-- ini nanti hapus --}}
-    {{-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
- 
-     <link href="{{ asset('app-assets/plugins/timepicker/bootstrap-datetimepicker.min.css')}}" rel="stylesheet">
-     <script src="{{ asset('app-assets/plugins/timepicker/bootstrap-datetimepicker.min.js')}}" type="text/javascript"></script> --}}
-
     <script>
         $('#time').datetimepicker({
             format: 'hh:mm:ss'
         });
     </script>
-    {{-- ini nanti hapus --}}
     <script>
         $(document).ready(function() {
-
-
-            $(".hd-logo").click(function() {
-                $('.brand-text').toggle();
-            })
             $('.datatable').DataTable();
 
             $(".select2").select2();
 
             $('.dropify').dropify();
 
-            $('.textarea').summernote({
-                dialogsInBody: true,
-                minHeight: 250,
-            });
-
-            $('.time-picker').bootstrapMaterialDatePicker({
-                date: false,
-                shortTime: false,
-                format: 'HH:mm'
-            });
-
         });
-        //  $('#import-absent').on('change', function() {
-        //      $('#button-addon2').removeAttr('disabled');
-        //  });
     </script>
 
     @yield('script')
