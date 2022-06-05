@@ -63,7 +63,7 @@
 
                 <li class="nav-item {{ request()->is('user*') ? 'active' : '' }}"">
                         <a href=" {{ route('user.index') }}"><i class="ft-user"></i>
-                    <span class="menu-title" data-i18n="">User</span>
+                    <span class="menu-title" data-i18n="">Management User</span>
                     </a>
                 </li>
             @endrole

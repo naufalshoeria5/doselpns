@@ -100,7 +100,7 @@
                                                             @enderror
                                                         </div>
                                                     </div>
-                                                    
+
                                                     <div class="form-group row">
                                                         <label for="" class="col-md-3 label-control">
                                                             Role User <sup class="text-danger"></sup>
@@ -108,9 +108,19 @@
                                                         <div class="col-md-9">
                                                             <div class="input-group">
                                                                 <select name="role" id="" class="form-control" required>
-                                                                    <option value="#" selected disabled>Pilih role User</option>
+                                                                    <option value="#" selected disabled>Pilih role User
+                                                                    </option>
                                                                     @foreach ($role as $item)
-                                                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                                        @if (@$user->exists)
+                                                                            <option value="{{ $item->id }}"
+                                                                                {{ @$item->name == @$user->getRoleNames()[0] ? 'selected' : '' }}>
+                                                                                {{ $item->name }}
+                                                                            </option>
+                                                                        @else
+                                                                            <option value="{{ $item->id }}">
+                                                                                {{ $item->name }}
+                                                                            </option>
+                                                                        @endif
                                                                     @endforeach
                                                                 </select>
                                                             </div>

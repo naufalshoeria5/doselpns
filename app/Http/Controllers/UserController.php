@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Contracts\Role;
 use Spatie\Permission\Models\Role as ModelsRole;
 
@@ -17,7 +18,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::all();
+        if (Auth::user()->getRoleNames()[0] == 'super-admin') {
+            $user = User::all();
+        } else {
+            $user = User::where('id', '!=', 1)->get();
+        }
+
 
         $title = 'Data User';
         return view('pages.user.index', [
@@ -60,7 +66,7 @@ class UserController extends Controller
 
         if ($request->role == 2) {
             $user->assignRole('admin');
-        }else{
+        } else {
             $user->assignRole('karyawan');
         }
 
@@ -88,9 +94,11 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $title = 'Edit Data User ' . $user->name;
+        $role = ModelsRole::where('id', '!=', 1)->get();
         return view('pages.user.form', [
             'title' => $title,
-            'user' => $user
+            'user' => $user,
+            'role' => $role
         ]);
     }
 
