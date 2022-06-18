@@ -26,10 +26,10 @@ class DashboardController extends Controller
         $berkasTahor = BerkasPegawai::whereIn('jenis', [4, 7, 10, 19, 29])
             ->get()
             ->count();
-        $berkasPensiun = BerkasPegawai::whereIn('jenis', [4, 12, 19, 10, 29])
+        $berkasPensiun = BerkasPegawai::whereIn('jenis', [7, 8, 9, 10, 11, 13, 29, 32])
             ->get()
             ->count();
-        $berkasKenaikan = BerkasPegawai::where('jenis', [4, 12, 19, 10, 29])
+        $berkasKenaikan = BerkasPegawai::where('jenis', [5, 7, 10, 12, 13, 16, 17, 18, 19, 27])
             ->get()
             ->count();
         $user = User::all()->count();
