@@ -1,7 +1,7 @@
 /node_modules
 /public/hot
 /public/berkas
-/public/app-assets
+# /public/app-assets
 /public/storage
 /storage/*.key
 /vendor
