@@ -17,7 +17,7 @@
                                 </div>
                                 <div class="card-content collapse show height-100">
                                     <div class="card-body p-2">
-                                        <h4 class="font-large-2 text-bold-400 text-info">
+                                        <h4 class="font-large-2 text-bold-400">
                                             {{ $totalPegawai }} <i class="ft-user float-right"></i>
                                         </h4>
                                     </div>
@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="card-content collapse show height-100">
                                     <div class="card-body p-2">
-                                        <h4 class="font-large-2 text-bold-400 text-info">
+                                        <h4 class="font-large-2 text-bold-400">
                                             {{ $totalUser }} <i class="ft-check-circle float-right"></i>
                                         </h4>
                                     </div>
@@ -67,28 +67,28 @@
                         <div class="card">
                             <div class="card-header p-1">
                                 <h4 class="card-title float-left">Jumlah Berkas <span
-                                        class="blue-grey lighten-2 font-small-3 mb-0">Dosel PNS</span></h4>
+                                        class="font-small-3 mb-0 text-dark text-bold-700">Dosel PNS</span></h4>
                             </div>
                             <div class="card-content collapse show">
                                 <div class="card-footer text-center p-1">
                                     <div class="row">
                                         <div
                                             class="col-md-3 col-12 border-right-blue-grey border-right-lighten-5 text-center">
-                                            <p class="blue-grey lighten-2 mb-0">Semua</p>
-                                            <p class="font-medium-5 text-bold-400">{{ $totalBerkas }}</p>
+                                            <p class="mb-0 text-dark text-bold-700">Semua</p>
+                                            <p class="font-medium-5 text-bold-700">{{ $totalBerkas }}</p>
                                         </div>
                                         <div
                                             class="col-md-3 col-12 border-right-blue-grey border-right-lighten-5 text-center">
-                                            <p class="blue-grey lighten-2 mb-0">Pensiun</p>
+                                            <p class="mb-0 text-dark text-bold-700">Pensiun</p>
                                             <p class="font-medium-5 text-bold-400">{{ $totalPensiun }}</p>
                                         </div>
                                         <div
                                             class="col-md-3 col-12 border-right-blue-grey border-right-lighten-5 text-center">
-                                            <p class="blue-grey lighten-2 mb-0">Kenaikan Pangkat</p>
+                                            <p class="mb-0 text-dark text-bold-700">Kenaikan Pangkat</p>
                                             <p class="font-medium-5 text-bold-400">{{ $totalKenaikan }}</p>
                                         </div>
                                         <div class="col-md-3 col-12 text-center">
-                                            <p class="blue-grey lighten-2 mb-0">Tahor</p>
+                                            <p class="mb-0 text-dark text-bold-700">Tahor</p>
                                             <p class="font-medium-5 text-bold-400">{{ $totalTahor }}</p>
                                         </div>
                                     </div>
@@ -104,13 +104,13 @@
                             <div class="col-12">
                                 <div class="card pull-up bg-gradient-directional-light">
                                     <div class="card-header bg-hexagons">
-                                        <h4 class="card-title info">Analisis</h4>
+                                        <h4 class="card-title text-dark text-bold-700">Analisis</h4>
                                         <a class="heading-elements-toggle"><i
                                                 class="la la-ellipsis-v font-medium-3"></i></a>
                                         <div class="heading-elements">
                                             <ul class="list-inline mb-0">
                                                 <li>
-                                                    <a class="btn btn-sm btn-white info box-shadow-1 round btn-min-width pull-right"
+                                                    <a class="btn btn-sm btn-white text-dark text-bold-700 box-shadow-1 round btn-min-width pull-right"
                                                         href="#" target="_blank">Report <i
                                                             class="ft-bar-chart pl-1"></i></a>
                                                 </li>
@@ -124,12 +124,12 @@
                                                     <div id="Analytics-donut-chart" class="height-100 donutShadow"></div>
                                                 </div>
                                                 <div class="media-body text-right mt-1">
-                                                    <h3 class="font-large-2 info">
+                                                    <h3 class="font-large-2 text-dark text-bold-700">
                                                         {{ $totalBerkasBaru > 99 ? $totalBerkasBaru . '+' : $totalBerkasBaru }}
                                                     </h3>
-                                                    <h6 class="mt-1"><span class="text-muted info">Berkas baru
+                                                    <h6 class="mt-1"><span class="text-muted text-dark text-bold-700">Berkas baru
                                                             dalam
-                                                            <a href="#" class="darken-2 info">30 Hari Terakhir</a></span>
+                                                            <a href="#" class="darken-2 text-dark text-bold-700">30 Hari Terakhir</a></span>
                                                     </h6>
                                                 </div>
                                             </div>
